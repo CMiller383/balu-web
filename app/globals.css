@@ -224,14 +224,19 @@ a {
 
 .waitlist-row {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 10px;
   width: 100%;
   max-width: 34rem;
 }
 
+/* Button label: short on mobile, full on larger screens */
+.waitlist-btn-short { display: inline; }
+.waitlist-btn-full  { display: none; }
+
 @media (min-width: 480px) {
-  .waitlist-row { flex-direction: row; }
+  .waitlist-btn-short { display: none; }
+  .waitlist-btn-full  { display: inline; }
 }
 
 /* ─────────────────────────────────────────
@@ -595,6 +600,12 @@ a {
 @media (max-width: 640px) {
   /* Extra side breathing room on small phones */
   .container { width: min(1120px, calc(100% - 3.5rem)); }
+  .privacy-hero { padding-inline: 0.5rem; }
+  .hero-copy { padding-inline: 0.5rem; }
+  .hero-copy h1 {
+    font-size: clamp(2.2rem, 9.5vw, 2.8rem) !important;
+    line-height: 1.08 !important;
+  }
 }
 
 /* ─────────────────────────────────────────

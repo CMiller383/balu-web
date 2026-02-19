@@ -132,7 +132,14 @@ export default function WaitlistForm({ source = "landing_v1" }: { source?: strin
             fontFamily: "inherit",
           }}
         >
-          {state === "loading" ? "Joining..." : "Join the waitlist"}
+          {state === "loading" ? (
+            "Joining..."
+          ) : (
+            <>
+              <span className="waitlist-btn-short">Join</span>
+              <span className="waitlist-btn-full">Join the waitlist</span>
+            </>
+          )}
         </button>
       </div>
 

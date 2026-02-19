@@ -20,7 +20,7 @@ export default function PrivacyPage() {
           style={{ maxWidth: "720px" }}
         >
           {/* Header */}
-          <div style={{ marginBottom: "3rem" }}>
+          <div className="privacy-hero" style={{ marginBottom: "3rem" }}>
             <span className="eyebrow" style={{ marginBottom: "1.25rem", display: "inline-flex" }}>Legal</span>
             <h1
               style={{
