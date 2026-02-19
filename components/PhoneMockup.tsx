@@ -180,8 +180,7 @@ export default function PhoneMockup({
                 style={{
                   width: "100%",
                   borderRadius: "1rem",
-                  background: "rgba(255, 255, 255, 0.72)",
-                  backdropFilter: "blur(8px)",
+                  background: "rgba(255, 255, 255, 0.90)",
                   padding: "16px",
                   boxShadow:
                     "0 4px 20px rgba(13, 32, 61, 0.08), inset 0 1px 0 rgba(255,255,255,0.6)",
@@ -290,16 +289,14 @@ export default function PhoneMockup({
         </div>
       </div>
 
-      {/* Ambient glow behind phone */}
+      {/* Ambient glow behind phone — soft radial gradient, no filter needed */}
       <div
         style={{
           position: "absolute",
-          inset: 0,
+          inset: "-30%",
           zIndex: -1,
           background:
-            "radial-gradient(ellipse 80% 60% at 50% 60%, rgba(74,159,212,0.18), transparent 70%)",
-          transform: "scale(1.4)",
-          filter: "blur(24px)",
+            "radial-gradient(ellipse 65% 50% at 50% 60%, rgba(74,159,212,0.13), transparent 70%)",
         }}
       />
     </div>

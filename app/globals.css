@@ -394,9 +394,8 @@ a {
 .card {
   border: 1px solid var(--glass-border);
   border-radius: 1.25rem;
-  background: var(--glass-bg);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  /* Solid bg instead of glass blur — visually near-identical, massive GPU savings */
+  background: rgba(255, 255, 255, 0.92);
   box-shadow:
     0 4px 6px rgba(13, 32, 61, 0.04),
     0 12px 34px rgba(13, 32, 61, 0.08),
@@ -490,8 +489,8 @@ a {
 .stagger-4 { animation-delay: 0.38s; }
 .stagger-5 { animation-delay: 0.52s; }
 
-.animate-float           { animation: float 5s ease-in-out infinite; }
-.animate-gradient-shift  { animation: gradient-shift 12s ease-in-out infinite; }
+.animate-float           { animation: float 5s ease-in-out infinite; will-change: transform; }
+.animate-gradient-shift  { animation: gradient-shift 12s ease-in-out infinite; will-change: transform, opacity; }
 
 /* ─────────────────────────────────────────
    Features section — responsive spacing

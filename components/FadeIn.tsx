@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import { LazyMotion, domAnimation, m, useReducedMotion } from "framer-motion";
 import { ReactNode } from "react";
 
 type FadeInDirection = "up" | "down" | "left" | "right" | "none";
@@ -39,18 +39,20 @@ export default function FadeIn({
   const animate = { opacity: 1, x: 0, y: 0 };
 
   return (
-    <motion.div
-      initial={initial}
-      whileInView={animate}
-      viewport={{ once, margin: "-80px" }}
-      transition={{
-        duration: shouldReduceMotion ? 0.01 : duration,
-        delay: shouldReduceMotion ? 0 : delay,
-        ease: [0.21, 0.47, 0.32, 0.98],
-      }}
-      className={className}
-    >
-      {children}
-    </motion.div>
+    <LazyMotion features={domAnimation} strict>
+      <m.div
+        initial={initial}
+        whileInView={animate}
+        viewport={{ once, margin: "-80px" }}
+        transition={{
+          duration: shouldReduceMotion ? 0.01 : duration,
+          delay: shouldReduceMotion ? 0 : delay,
+          ease: [0.21, 0.47, 0.32, 0.98],
+        }}
+        className={className}
+      >
+        {children}
+      </m.div>
+    </LazyMotion>
   );
 }
