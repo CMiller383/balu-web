@@ -1,11 +1,10 @@
 import Link from "next/link";
 import Image from "next/image";
-import dynamic from "next/dynamic";
 import WaitlistForm from "@/components/WaitlistForm";
 import FadeIn from "@/components/FadeIn";
+import PhoneMockup from "@/components/PhoneMockup";
 
-// Code-split PhoneMockup — it's a heavy component only needed on desktop
-const PhoneMockup = dynamic(() => import("@/components/PhoneMockup"));
+export const dynamic = "force-static";
 
 const steps = [
   {

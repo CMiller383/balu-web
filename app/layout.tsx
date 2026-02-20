@@ -2,18 +2,19 @@ import type { Metadata } from "next";
 import { Cormorant_Garamond, Manrope } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import MotionProvider from "@/components/MotionProvider";
 import "./globals.css";
 
 const serif = Cormorant_Garamond({
   subsets: ["latin"],
   variable: "--font-serif",
-  weight: ["500", "600", "700"],
+  weight: ["600", "700"],
 });
 
 const sans = Manrope({
   subsets: ["latin"],
   variable: "--font-sans",
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "600", "700"],
 });
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
@@ -78,7 +79,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${serif.variable} ${sans.variable}`}>
       <body>
-        {children}
+        <MotionProvider>
+          {children}
+        </MotionProvider>
         <Analytics />
         <SpeedInsights />
       </body>
