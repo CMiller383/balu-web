@@ -82,10 +82,9 @@ export async function POST(request: NextRequest) {
     <tr><td align="center">
       <table width="560" cellpadding="0" cellspacing="0" style="max-width:560px;width:100%;">
 
-        <!-- Logo / wordmark -->
+        <!-- Logo -->
         <tr><td align="center" style="padding-bottom:32px;">
-          <span style="font-size:28px;font-weight:700;letter-spacing:-0.5px;color:#10243f;">balu</span>
-          <span style="display:block;font-size:12px;letter-spacing:3px;text-transform:uppercase;color:#8fa3b8;margin-top:4px;">wellness</span>
+          <img src="https://balu.live/logo-full.png" alt="Balu" width="120" style="display:block;height:auto;border:0;" />
         </td></tr>
 
         <!-- Card -->
@@ -123,7 +122,7 @@ export async function POST(request: NextRequest) {
         <!-- Footer -->
         <tr><td align="center" style="padding-top:28px;">
           <p style="margin:0;font-size:12px;color:#8fa3b8;line-height:1.8;">
-            You're receiving this because you signed up at <strong style="color:#5d6d82;">balu.health</strong><br>
+            You're receiving this because you signed up at <strong style="color:#5d6d82;">balu.live</strong><br>
             This is a one-time confirmation — we won't email you until we launch.
           </p>
         </td></tr>
