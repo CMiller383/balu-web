@@ -1,3 +1,31 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: var(--bg);
+  --color-surface: var(--surface);
+  --color-text-primary: var(--text-primary);
+  --color-text-muted: var(--text-muted);
+  --color-text-subtle: var(--text-subtle);
+  --color-brand: var(--brand-primary);
+  --color-brand-light: var(--brand-primary-light);
+  --color-brand-dark: var(--brand-primary-dark);
+  --color-brand-warm: var(--brand-secondary);
+  --color-brand-warm-light: var(--brand-secondary-light);
+  --color-border-soft: var(--border);
+  --color-border-strong: var(--border-strong);
+
+  --shadow-calm: 0 12px 34px rgba(13, 32, 61, 0.08);
+  --shadow-card: 0 4px 6px rgba(13, 32, 61, 0.04), 0 12px 34px rgba(13, 32, 61, 0.08);
+  --shadow-phone: 0 32px 80px rgba(13, 32, 61, 0.20), 0 8px 24px rgba(13, 32, 61, 0.12);
+  --shadow-glow: 0 0 40px rgba(74, 159, 212, 0.18);
+
+  --radius-phone: 2.5rem;
+  --radius-screen: 1.75rem;
+
+  --animate-float: float 5s ease-in-out infinite;
+  --animate-gradient-shift: gradient-shift 12s ease-in-out infinite;
+}
+
 /* ─────────────────────────────────────────
    Design tokens
 ───────────────────────────────────────── */
