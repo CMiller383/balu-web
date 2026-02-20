@@ -74,17 +74,90 @@ export async function POST(request: NextRequest) {
 
   const resend = new Resend(resendApiKey);
 
+  const confirmationHtml = `<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
+<body style="margin:0;padding:0;background:#f8fafd;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background:#f8fafd;padding:48px 16px;">
+    <tr><td align="center">
+      <table width="560" cellpadding="0" cellspacing="0" style="max-width:560px;width:100%;">
+
+        <!-- Logo / wordmark -->
+        <tr><td align="center" style="padding-bottom:32px;">
+          <span style="font-size:28px;font-weight:700;letter-spacing:-0.5px;color:#10243f;">balu</span>
+          <span style="display:block;font-size:12px;letter-spacing:3px;text-transform:uppercase;color:#8fa3b8;margin-top:4px;">wellness</span>
+        </td></tr>
+
+        <!-- Card -->
+        <tr><td style="background:rgba(255,255,255,0.92);border-radius:20px;padding:48px 40px;box-shadow:0 4px 32px rgba(74,159,212,0.10);border:1px solid rgba(74,159,212,0.12);">
+
+          <!-- Accent line -->
+          <table width="100%" cellpadding="0" cellspacing="0"><tr>
+            <td style="height:3px;background:linear-gradient(90deg,#4a9fd4,#c87d5e);border-radius:2px;margin-bottom:36px;display:block;"></td>
+          </tr></table>
+
+          <p style="margin:0 0 8px;font-size:13px;letter-spacing:2.5px;text-transform:uppercase;color:#4a9fd4;font-weight:600;">You're on the list</p>
+          <h1 style="margin:0 0 20px;font-size:30px;font-weight:700;color:#10243f;line-height:1.2;">Something good<br>is coming your way.</h1>
+
+          <p style="margin:0 0 24px;font-size:16px;line-height:1.7;color:#5d6d82;">
+            Thanks for joining the Balu waitlist. We're building something that helps you
+            feel genuinely well — not just tracked. You'll be among the first to know when
+            we open the doors.
+          </p>
+
+          <table cellpadding="0" cellspacing="0" style="margin:0 0 32px;">
+            <tr>
+              <td style="background:linear-gradient(135deg,#4a9fd4,#2d7fb5);border-radius:12px;padding:14px 28px;">
+                <span style="color:#ffffff;font-size:15px;font-weight:600;letter-spacing:0.3px;">Early access · No spam · Unsubscribe anytime</span>
+              </td>
+            </tr>
+          </table>
+
+          <p style="margin:0;font-size:14px;color:#8fa3b8;line-height:1.6;">
+            In the meantime, take a breath. You've got this.<br>
+            — The Balu team
+          </p>
+
+        </td></tr>
+
+        <!-- Footer -->
+        <tr><td align="center" style="padding-top:28px;">
+          <p style="margin:0;font-size:12px;color:#8fa3b8;line-height:1.8;">
+            You're receiving this because you signed up at <strong style="color:#5d6d82;">balu.health</strong><br>
+            This is a one-time confirmation — we won't email you until we launch.
+          </p>
+        </td></tr>
+
+      </table>
+    </td></tr>
+  </table>
+</body>
+</html>`;
+
   try {
-    await resend.emails.send({
-      from: fromEmail,
-      to: [notifyTo],
-      subject: "New Balu waitlist signup",
-      text:
-        `Email: ${normalizedEmail}\n` +
-        `Source: ${payload.source?.trim() || "landing_v1"}\n` +
-        `Time: ${new Date().toISOString()}\n` +
-        `IP: ${ip}`,
-    });
+    await Promise.all([
+      resend.emails.send({
+        from: fromEmail,
+        to: [notifyTo],
+        subject: "New Balu waitlist signup",
+        text:
+          `Email: ${normalizedEmail}\n` +
+          `Source: ${payload.source?.trim() || "landing_v1"}\n` +
+          `Time: ${new Date().toISOString()}\n` +
+          `IP: ${ip}`,
+      }),
+      resend.emails.send({
+        from: fromEmail,
+        to: [normalizedEmail],
+        subject: "You're on the Balu waitlist 🌿",
+        html: confirmationHtml,
+        text:
+          `You're on the list.\n\n` +
+          `Thanks for joining the Balu waitlist. We're building something that helps you feel genuinely well — not just tracked. You'll be among the first to know when we open the doors.\n\n` +
+          `Early access · No spam · Unsubscribe anytime\n\n` +
+          `In the meantime, take a breath. You've got this.\n— The Balu team`,
+      }),
+    ]);
 
     return NextResponse.json({ ok: true }, { status: 201 });
   } catch {
