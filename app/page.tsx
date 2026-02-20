@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import dynamic from "next/dynamic";
 import WaitlistForm from "@/components/WaitlistForm";
 import FadeIn from "@/components/FadeIn";
@@ -77,7 +78,14 @@ export default function Home() {
       {/* ── HEADER ─────────────────────────────────────────────── */}
       <header className="site-header">
         <div className="container site-header-inner">
-          <span className="site-logo">Balu</span>
+          <Image
+              src="/logo-full.png"
+              alt="Balu"
+              width={130}
+              height={87}
+              style={{ objectFit: "contain" }}
+              priority
+            />
           <nav className="nav-desktop">
             <a href="#how">How it works</a>
             <a href="#features">Features</a>
@@ -729,16 +737,13 @@ export default function Home() {
       <footer className="site-footer">
         <div className="container site-footer-inner">
           <div className="footer-brand">
-            <span
-              style={{
-                fontFamily: "var(--font-serif)",
-                fontSize: "1.1875rem",
-                fontWeight: 600,
-                color: "#10243f",
-              }}
-            >
-              Balu
-            </span>
+            <Image
+              src="/logo-wordmark.png"
+              alt="Balu"
+              width={150}
+              height={60}
+              style={{ objectFit: "contain" }}
+            />
             <span style={{ color: "#8fa3b8" }}>© 2026 · Private reflection, designed with care.</span>
           </div>
           <nav className="footer-nav">
