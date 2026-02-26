@@ -1,0 +1,11 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "QXNJ57P562.com.balu.app",
+        "paths": ["/", "/tasks", "/auth/*"]
+      }
+    ]
+  }
+}
