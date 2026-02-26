@@ -5,6 +5,20 @@ const nextConfig = {
     // Strip all console.* calls in production builds
     removeConsole: process.env.NODE_ENV === "production",
   },
+  async redirects() {
+    return [
+      {
+        source: "/tasks/:path*",
+        destination: "/",
+        permanent: false,
+      },
+      {
+        source: "/tasks",
+        destination: "/",
+        permanent: false,
+      },
+    ];
+  },
   async headers() {
     return [
       {
